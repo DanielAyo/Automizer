@@ -15,6 +15,13 @@
 //==============================================================================
 AutomizerAudioProcessor::AutomizerAudioProcessor()
 {
+	// add single side-chain bus for secondary input (instrument that will produce chord information)
+	busArrangement.inputBuses.add(AudioProcessorBus("Sidechain In", AudioChannelSet::mono()));
+
+	// To be compatible with all VST2 DAWs, it's best to pass through the sidechain
+	if (isVST2())
+		busArrangement.outputBuses.add(AudioProcessorBus("Sidechain Out", AudioChannelSet::mono()));
+
 }
 
 AutomizerAudioProcessor::~AutomizerAudioProcessor()
@@ -90,9 +97,31 @@ void AutomizerAudioProcessor::releaseResources()
 #ifndef JucePlugin_PreferredChannelConfigurations
 bool AutomizerAudioProcessor::setPreferredBusArrangement (bool isInput, int bus, const AudioChannelSet& preferredSet)
 {
-    // Reject any bus arrangements that are not compatible with your plugin
+	// Reject any bus arrangements that are not compatible with your plugin
 
+	const bool isMainBus = (bus == 0);
+	const bool isSideChain = (bus == 1);
+ 
     const int numChannels = preferredSet.size();
+
+	// do not allow disabling channels on main bus
+	if (numChannels == 0 && isMainBus) return false;
+
+	// VST2 does not natively support sidechains/aux buses.
+	// But many DAWs treat the third input of a plug-in
+	// as a sidechain. So limit the main bus to stereo!
+	if (isVST2())
+	{
+		if (isMainBus && numChannels != 2) return false;
+
+		// we only allow mono sidechains in VST-2
+		if (isSideChain && numChannels != 1)
+			return false;
+	}
+
+	// always have the same channel layout on both input and output on the main bus
+	if (isMainBus && !AudioProcessor::setPreferredBusArrangement(!isInput, bus, preferredSet))
+		return false;
 
    #if JucePlugin_IsMidiEffect
     if (numChannels != 0)
