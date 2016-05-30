@@ -4,34 +4,72 @@
               bundleIdentifier="com.DanielAyo.Automizer" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="1" buildAU="0" buildAUv3="0" buildRTAS="0"
               buildAAX="0" pluginName="Automizer" pluginDesc="Automizer" pluginManufacturer="Daniel Ayo"
-              pluginManufacturerCode="DAyo" pluginCode="Qour" pluginChannelConfigs=""
+              pluginManufacturerCode="DAyo" pluginCode="Qour" pluginChannelConfigs="{1,1},{2,2}"
               pluginIsSynth="0" pluginWantsMidiIn="1" pluginProducesMidiOut="1"
               pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="AutomizerAU"
               pluginRTASCategory="" aaxIdentifier="com.DanielAyo.Automizer"
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="4.2.1"
               companyName="Daniel Ayo" companyWebsite="www.danielayo.com">
   <MAINGROUP id="gVdmGk" name="Automizer">
-    <GROUP id="{8E965D0C-7280-719E-B584-D96F09574E0F}" name="Source">
-      <FILE id="mHxP7K" name="PluginProcessor.cpp" compile="1" resource="0"
-            file="Source/PluginProcessor.cpp"/>
-      <FILE id="wOoHHr" name="PluginProcessor.h" compile="0" resource="0"
-            file="Source/PluginProcessor.h"/>
-      <FILE id="tBm9zr" name="PluginEditor.cpp" compile="1" resource="0"
-            file="Source/PluginEditor.cpp"/>
-      <FILE id="CmtlX3" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    <GROUP id="{8E7C3275-F03D-A73A-389C-83A181D71C37}" name="Source">
+      <GROUP id="{720157A7-2508-2BC8-0CCA-2B465485ACDF}" name="JUCE">
+        <FILE id="vPD9mX" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+        <FILE id="Qxwm9N" name="PluginProcessor.cpp" compile="1" resource="0"
+              file="Source/PluginProcessor.cpp"/>
+        <FILE id="KMwJ0o" name="PluginEditor.cpp" compile="1" resource="0"
+              file="Source/PluginEditor.cpp"/>
+        <FILE id="lUCrQa" name="PluginProcessor.h" compile="0" resource="0"
+              file="Source/PluginProcessor.h"/>
+      </GROUP>
+      <GROUP id="{C495DE02-7555-E8D3-BDB4-6752754382A5}" name="Pitch">
+        <FILE id="fKYpyM" name="PitchDecide.h" compile="0" resource="0" file="Source/PitchDecide.h"/>
+        <FILE id="S6L0Pd" name="PitchDetect.h" compile="0" resource="0" file="Source/PitchDetect.h"/>
+        <FILE id="PNs8hb" name="PitchShift.h" compile="0" resource="0" file="Source/PitchShift.h"/>
+      </GROUP>
+      <GROUP id="{D7D0FA05-E0EF-EC2B-512D-43DDE211F015}" name="Filters">
+        <FILE id="m5hTkO" name="Biquad.h" compile="0" resource="0" file="Source/Biquad.h"/>
+        <FILE id="RitwJl" name="lpfcoeffM5.h" compile="0" resource="0" file="Source/lpfcoeffM5.h"/>
+        <FILE id="F2gCP4" name="Biquad.cpp" compile="1" resource="0" file="Source/Biquad.cpp"/>
+      </GROUP>
+      <GROUP id="{698AF24F-E6DD-B61D-A4FB-AB8A745A1993}" name="Dependencies">
+        <FILE id="ynlUpO" name="kiss_fft.c" compile="1" resource="0" file="../../../../../SDKs/kiss_fft130/kiss_fft.c"/>
+        <FILE id="idvXOh" name="kiss_fftr.c" compile="1" resource="0" file="../../../../../SDKs/kiss_fft130/tools/kiss_fftr.c"/>
+      </GROUP>
+      <GROUP id="{C3B40E02-B908-96C3-642C-ACDCB57B4785}" name="Chord">
+        <FILE id="BeCIYG" name="ProbabilityTables.h" compile="0" resource="0"
+              file="Source/ProbabilityTables.h"/>
+        <FILE id="RggG3k" name="chromamethods.cpp" compile="1" resource="0"
+              file="Source/chromamethods.cpp"/>
+        <FILE id="A1LbvO" name="MyerFFT.cpp" compile="1" resource="0" file="Source/MyerFFT.cpp"/>
+        <FILE id="x7Q1Qz" name="chromamethods.h" compile="0" resource="0" file="Source/chromamethods.h"/>
+        <FILE id="k52Zsz" name="MyerFFT.h" compile="0" resource="0" file="Source/MyerFFT.h"/>
+        <FILE id="pF3khq" name="MyerViterbi.cpp" compile="1" resource="0" file="Source/MyerViterbi.cpp"/>
+        <FILE id="C3oiO8" name="MyerViterbi.h" compile="0" resource="0" file="Source/MyerViterbi.h"/>
+        <FILE id="zHlVWV" name="nnls.c" compile="1" resource="0" file="Source/nnls.c"/>
+        <FILE id="yj4AeK" name="nnls.h" compile="0" resource="0" file="Source/nnls.h"/>
+        <FILE id="Mm3qup" name="NNLSBase.cpp" compile="1" resource="0" file="Source/NNLSBase.cpp"/>
+        <FILE id="LKjve1" name="NNLSBase.h" compile="0" resource="0" file="Source/NNLSBase.h"/>
+        <FILE id="LDTVjP" name="NNLSChroma.cpp" compile="1" resource="0" file="Source/NNLSChroma.cpp"/>
+        <FILE id="RDGXDh" name="NNLSChroma.h" compile="0" resource="0" file="Source/NNLSChroma.h"/>
+      </GROUP>
+      <FILE id="WWgQkM" name="HarmonizerEngine.h" compile="0" resource="0"
+            file="Source/HarmonizerEngine.h"/>
+      <FILE id="ujrAsk" name="HarmonyControl.h" compile="0" resource="0"
+            file="Source/HarmonyControl.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <VS2015 targetFolder="Builds/VisualStudio2015" vstFolder="">
+    <VS2015 targetFolder="Builds/VisualStudio2015" vstFolder="" vst3Folder=""
+            externalLibraries="" extraDefs="" extraCompilerFlags="" extraLinkerFlags="">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="Automizer"/>
+                       isDebug="1" optimisation="1" targetName="Automizer" headerPath="&quot;C:\SDKs\boost_1_60_0&quot;&#10;&quot;C:\SDKs\kiss_fft130&quot;&#10;&quot;C:\SDKs\kiss_fft130\tools&quot;"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="3" targetName="Automizer"/>
+                       isDebug="0" optimisation="3" targetName="Automizer" headerPath="&quot;C:\SDKs\boost_1_60_0&quot;&#10;&quot;C:\SDKs\kiss_fft130&quot;&#10;&quot;C:\SDKs\kiss_fft130\tools&quot;"/>
         <CONFIGURATION name="Debug x64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="Automizer_x64"/>
+                       isDebug="1" optimisation="1" targetName="Automizer_x64" headerPath="&quot;C:\SDKs\boost_1_60_0&quot;&#10;&quot;C:\SDKs\kiss_fft130&quot;&#10;&quot;C:\SDKs\kiss_fft130\tools&quot;"/>
         <CONFIGURATION name="Release x64" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="Automizer_x64"/>
+                       isDebug="0" optimisation="3" targetName="Automizer_x64" headerPath="&quot;C:\SDKs\boost_1_60_0&quot;&#10;&quot;C:\SDKs\kiss_fft130&quot;&#10;&quot;C:\SDKs\kiss_fft130\tools&quot;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../../../SDKs/JUCE/modules"/>
@@ -59,6 +97,6 @@
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
   <LIVE_SETTINGS>
-    <WINDOWS/>
+    <WINDOWS extraDLLs="" headerPath="" systemHeaderPath="" defines="" extraCompilerFlags=""/>
   </LIVE_SETTINGS>
 </JUCERPROJECT>

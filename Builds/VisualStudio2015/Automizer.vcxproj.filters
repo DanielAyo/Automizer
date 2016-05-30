@@ -8,6 +8,21 @@
     <Filter Include="Automizer\Source">
       <UniqueIdentifier>{48EB44DE-610F-7143-C3F9-961F5CDAD18F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Automizer\Source\JUCE">
+      <UniqueIdentifier>{86838A2A-07CE-40E4-E393-A903F08AD249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Automizer\Source\Pitch">
+      <UniqueIdentifier>{917A8644-E55C-A2C0-CD78-E810FB56C871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Automizer\Source\Filters">
+      <UniqueIdentifier>{3E9B01A6-25E6-250A-F968-AABFD27EF203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Automizer\Source\Dependencies">
+      <UniqueIdentifier>{7B27C7C6-FFDF-BC0A-5081-88566C074A07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Automizer\Source\Chord">
+      <UniqueIdentifier>{75DC136D-C4DB-0764-5352-440724468A33}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Modules">
       <UniqueIdentifier>{422C46B7-0467-2DB0-BF3C-16DFCAFD69AC}</UniqueIdentifier>
     </Filter>
@@ -278,10 +293,37 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
-      <Filter>Automizer\Source</Filter>
+      <Filter>Automizer\Source\JUCE</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginEditor.cpp">
-      <Filter>Automizer\Source</Filter>
+      <Filter>Automizer\Source\JUCE</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Biquad.cpp">
+      <Filter>Automizer\Source\Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\SDKs\kiss_fft130\kiss_fft.c">
+      <Filter>Automizer\Source\Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\SDKs\kiss_fft130\tools\kiss_fftr.c">
+      <Filter>Automizer\Source\Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\chromamethods.cpp">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MyerFFT.cpp">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MyerViterbi.cpp">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\nnls.c">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NNLSBase.cpp">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NNLSChroma.cpp">
+      <Filter>Automizer\Source\Chord</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\..\SDKs\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
@@ -1761,10 +1803,52 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\PluginEditor.h">
+      <Filter>Automizer\Source\JUCE</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
+      <Filter>Automizer\Source\JUCE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PitchDecide.h">
+      <Filter>Automizer\Source\Pitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PitchDetect.h">
+      <Filter>Automizer\Source\Pitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PitchShift.h">
+      <Filter>Automizer\Source\Pitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Biquad.h">
+      <Filter>Automizer\Source\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\lpfcoeffM5.h">
+      <Filter>Automizer\Source\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProbabilityTables.h">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\chromamethods.h">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MyerFFT.h">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MyerViterbi.h">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\nnls.h">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NNLSBase.h">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NNLSChroma.h">
+      <Filter>Automizer\Source\Chord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\HarmonizerEngine.h">
       <Filter>Automizer\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\PluginEditor.h">
+    <ClInclude Include="..\..\Source\HarmonyControl.h">
       <Filter>Automizer\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\SDKs\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h">

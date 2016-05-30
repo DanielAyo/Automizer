@@ -1,75 +1,53 @@
-/*
-  ==============================================================================
+#ifndef __PLUGINEDITOR_H_51DE3417__
+#define __PLUGINEDITOR_H_51DE3417__
 
-  This is an automatically generated GUI class created by the Projucer!
-
-  Be careful when adding custom code to these files, as only the code within
-  the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
-  and re-saved.
-
-  Created with Projucer version: 4.2.1
-
-  ------------------------------------------------------------------------------
-
-  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright (c) 2015 - ROLI Ltd.
-
-  ==============================================================================
-*/
-
-#ifndef __JUCE_HEADER_CCC97E6E72718693__
-#define __JUCE_HEADER_CCC97E6E72718693__
-
-//[Headers]     -- You can add your own extra header files here --
-#include "JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
-//[/Headers]
-
 
 
 //==============================================================================
 /**
-                                                                    //[Comments]
-    An auto-generated component, created by the Projucer.
-
-    Describe your class and how it works here!
-                                                                    //[/Comments]
 */
-class AutomizerAudioProcessorEditor  : public AudioProcessorEditor,
-                                       public Timer
+class AutomizerAudioProcessorEditor  :  public AudioProcessorEditor,
+										public SliderListener,
+										public Timer, 
+										public ComboBox::Listener
 {
 public:
-    //==============================================================================
-    AutomizerAudioProcessorEditor (AutomizerAudioProcessor& ownerFilter);
+    AutomizerAudioProcessorEditor (AutomizerAudioProcessor* ownerFilter);
     ~AutomizerAudioProcessorEditor();
 
     //==============================================================================
-    //[UserMethods]     -- You can add your own custom methods in this section.
+    // This is just a standard Juce paint method...
+    void paint (Graphics& g);
 	void timerCallback();
-	AutomizerAudioProcessor* getProcessor() const
-	{
-		return static_cast <AutomizerAudioProcessor*>(getAudioProcessor());
-	}
-	
-	//[/UserMethods]
-
-    void paint (Graphics& g) override;
-    void resized() override;
-
-
-
+    void resized();
+    void sliderValueChanged (Slider*);
+    void comboBoxChanged (ComboBox*);
+	void displayPitchInfo();
+	void displayChordInfo();
 private:
-    //[UserVariables]   -- You can add your own custom variables in this section.
-    //[/UserVariables]
+    Label outputGainLabel, voice1GainLabel, voice2GainLabel, shiftTypeLabel, transposeLabel, pan1Label, pan2Label,voice1Label, voice2Label, nameLabel;
+	Label keyLabel, scaleLabel, autotuneLabel, attackLabel, refLabel, shiftLabel, whitenLabel, rollOnLabel, harmonyLabel, inputLabel, outputLabel, systemLabel, input2Label;
+    Slider outputGainSlider, voice1GainSlider, voice2GainSlider, transposeSlider,  pan1Slider,  pan2Slider;
+	Slider attackSlider, refSlider, whitenSlider, rollOnSlider;
+	ComboBox shiftTypeComboBox, autotuneComboBox, keyComboBox, scaleComboBox, shiftComboBox, harmonyComboBox, tuneComboBox;
+	Label pitchLabel, chordLabel, transposePitchLabel, centsLabel, MIDINoteLabel, harm1Label, harm2Label;
+    ScopedPointer<ResizableCornerComponent> resizer;
+    ComponentBoundsConstrainer resizeLimits;
+    Label harm1AttackLabel, harm2AttackLabel, vDepthLabel, vRateLabel, tuneLabel;
+	Slider harm1AttackSlider, harm2AttackSlider, vDepthSlider, vRateSlider;
 
-    //==============================================================================
 
-
-    //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AutomizerAudioProcessorEditor)
+	GroupComponent* groupComponent;
+	GroupComponent* groupComponent2;
+	GroupComponent* groupComponent3;
+	GroupComponent* groupComponent4;
+    AutomizerAudioProcessor* getProcessor() const
+    {
+        return static_cast <AutomizerAudioProcessor*> (getAudioProcessor());
+    }
 };
 
-//[EndFile] You can add extra defines here...
-//[/EndFile]
 
-#endif   // __JUCE_HEADER_CCC97E6E72718693__
+#endif  // __PLUGINEDITOR_H_51DE3417__

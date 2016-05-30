@@ -1,18 +1,8 @@
-/*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
-*/
-
-#ifndef PLUGINPROCESSOR_H_INCLUDED
-#define PLUGINPROCESSOR_H_INCLUDED
+#ifndef AUTOMIZER
+#define AUTOMIZER
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
+#include "HarmonizerEngine.h"
 
 //==============================================================================
 /**
@@ -25,41 +15,82 @@ public:
     ~AutomizerAudioProcessor();
 
     //==============================================================================
-    void prepareToPlay (double sampleRate, int samplesPerBlock) override;
-    void releaseResources() override;
+    void prepareToPlay (double sampleRate, int samplesPerBlock);
+    void releaseResources();
 
-   #ifndef JucePlugin_PreferredChannelConfigurations
-    bool setPreferredBusArrangement (bool isInput, int bus, const AudioChannelSet& preferredSet) override;
-   #endif
-
-    void processBlock (AudioSampleBuffer&, MidiBuffer&) override;
+    void processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages);
 
     //==============================================================================
-    AudioProcessorEditor* createEditor() override;
-    bool hasEditor() const override;
+    AudioProcessorEditor* createEditor();
+    bool hasEditor() const;
 
     //==============================================================================
-    const String getName() const override;
+    const String getName() const;
 
-    bool acceptsMidi() const override;
-    bool producesMidi() const override;
-    double getTailLengthSeconds() const override;
+    int getNumParameters();
+
+    float getParameter (int index);
+    void setParameter (int index, float newValue);
+
+    const String getParameterName (int index);
+    const String getParameterText (int index);
+
+    const String getInputChannelName (int channelIndex) const;
+    const String getOutputChannelName (int channelIndex) const;
+    bool isInputChannelStereoPair (int index) const;
+    bool isOutputChannelStereoPair (int index) const;
+
+    bool acceptsMidi() const;
+    bool producesMidi() const;
+    bool silenceInProducesSilenceOut() const;
+    double getTailLengthSeconds() const;
 
     //==============================================================================
-    int getNumPrograms() override;
-    int getCurrentProgram() override;
-    void setCurrentProgram (int index) override;
-    const String getProgramName (int index) override;
-    void changeProgramName (int index, const String& newName) override;
-	bool isVST2() const noexcept { return (wrapperType == wrapperType_VST); }
-    //==============================================================================
-    void getStateInformation (MemoryBlock& destData) override;
-    void setStateInformation (const void* data, int sizeInBytes) override;
+    int getNumPrograms();
+    int getCurrentProgram();
+    void setCurrentProgram (int index);
+    const String getProgramName (int index);
+    void changeProgramName (int index, const String& newName);
 
+    //==============================================================================
+    void getStateInformation (MemoryBlock& destData);
+    void setStateInformation (const void* data, int sizeInBytes);
+	// these are used to persist the UI's size - the values are stored along with the
+    // filter's other parameters, and the UI component will update them when it gets
+    // resized.
+    int lastUIWidth, lastUIHeight;
+	
+	enum Parameters
+    {
+        kOutputGain = 0,
+		kVoice1Gain,
+		kVoice2Gain,
+		kPitchShiftType,
+		kTranspose,
+		kPan1,
+		kPan2,
+		kKey,
+		kScale,
+		kAutotune,
+		kAttack,
+		kRef,
+		kShift,
+		kRollOn,
+		kWhite,
+		kHarmony,
+		kHarm1Attack,
+		kHarm2Attack,
+		kVibratoDepth,
+		kVibratoRate,
+		kTune,
+        kNumParameters
+    };
+
+	HarmonizerEngine* engine;
 private:
+	float sampleRate;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AutomizerAudioProcessor)
 };
 
-
-#endif  // PLUGINPROCESSOR_H_INCLUDED
+#endif  
