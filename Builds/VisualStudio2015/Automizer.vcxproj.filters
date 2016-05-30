@@ -3332,6 +3332,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\User Manual -README.docx">
+      <Filter>Automizer\Source</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\Daniel Oluyomi MSc Final Project.docx">
+      <Filter>Automizer\Source</Filter>
+    </None>
     <None Include="..\..\..\..\..\..\..\SDKs\JUCE\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt">
       <Filter>Juce Modules\juce_graphics\image_formats\jpglib</Filter>
     </None>

@@ -2113,6 +2113,8 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\User Manual -README.docx"/>
+    <None Include="..\..\..\..\..\Desktop\Daniel Oluyomi MSc Final Project.docx"/>
     <None Include="..\..\..\..\..\..\..\SDKs\JUCE\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt"/>
     <None Include="..\..\..\..\..\..\..\SDKs\JUCE\modules\juce_graphics\image_formats\pnglib\libpng_readme.txt"/>
   </ItemGroup>

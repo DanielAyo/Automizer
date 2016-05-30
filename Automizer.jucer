@@ -12,6 +12,10 @@
               companyName="Daniel Ayo" companyWebsite="www.danielayo.com">
   <MAINGROUP id="gVdmGk" name="Automizer">
     <GROUP id="{8E7C3275-F03D-A73A-389C-83A181D71C37}" name="Source">
+      <FILE id="SFhYyL" name="User Manual -README.docx" compile="0" resource="0"
+            file="User Manual -README.docx"/>
+      <FILE id="ZzOHiy" name="Daniel Oluyomi MSc Final Project.docx" compile="0"
+            resource="0" file="../../../Desktop/Daniel Oluyomi MSc Final Project.docx"/>
       <GROUP id="{720157A7-2508-2BC8-0CCA-2B465485ACDF}" name="JUCE">
         <FILE id="vPD9mX" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
         <FILE id="Qxwm9N" name="PluginProcessor.cpp" compile="1" resource="0"
